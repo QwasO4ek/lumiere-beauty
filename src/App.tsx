@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { Header } from './components/layout/Header';
 import { Hero } from './components/sections/Hero';
 import { About } from './components/sections/About';
@@ -15,12 +15,32 @@ import { Footer } from './components/layout/Footer';
 import { ScrollToTop } from './components/ui/ScrollToTop';
 import { MobileCTA } from './components/ui/MobileCTA';
 import { Toast } from './components/ui/Toast';
+import { ClientAppointmentsDrawer } from './components/booking/ClientAppointmentsDrawer';
+import { SalonLiveMatrixModal } from './components/booking/SalonLiveMatrixModal';
+import { bookingStore } from './utils/bookingStore';
 
 export const App: React.FC = () => {
   const [selectedServiceId, setSelectedServiceId] = useState<string>('');
   const [selectedMasterId, setSelectedMasterId] = useState<string>('');
   const [promoApplied, setPromoApplied] = useState<boolean>(false);
   const [toastOpen, setToastOpen] = useState<boolean>(false);
+
+  // Modals & Drawer state
+  const [isAppointmentsDrawerOpen, setIsAppointmentsDrawerOpen] = useState<boolean>(false);
+  const [isSalonMatrixOpen, setIsSalonMatrixOpen] = useState<boolean>(false);
+  const [activeAppointmentsCount, setActiveAppointmentsCount] = useState<number>(0);
+
+  const updateAppointmentsCount = () => {
+    const list = bookingStore.getUserAppointments();
+    const confirmed = list.filter((a) => a.status === 'confirmed');
+    setActiveAppointmentsCount(confirmed.length);
+  };
+
+  useEffect(() => {
+    updateAppointmentsCount();
+    window.addEventListener('lumiere_appointments_updated', updateAppointmentsCount);
+    return () => window.removeEventListener('lumiere_appointments_updated', updateAppointmentsCount);
+  }, []);
 
   const scrollToBooking = () => {
     const bookingSection = document.getElementById('booking');
@@ -53,12 +73,18 @@ export const App: React.FC = () => {
 
   const handleBookingSuccess = () => {
     setToastOpen(true);
+    updateAppointmentsCount();
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white relative">
       {/* Top Sticky Header */}
-      <Header onBookClick={scrollToBooking} />
+      <Header
+        onBookClick={scrollToBooking}
+        onOpenMyAppointments={() => setIsAppointmentsDrawerOpen(true)}
+        onOpenSalonMatrix={() => setIsSalonMatrixOpen(true)}
+        activeAppointmentsCount={activeAppointmentsCount}
+      />
 
       {/* Main Sections */}
       <main className="flex-1">
@@ -79,6 +105,8 @@ export const App: React.FC = () => {
           preselectedMasterId={selectedMasterId}
           promoApplied={promoApplied}
           onSuccess={handleBookingSuccess}
+          onOpenMyAppointments={() => setIsAppointmentsDrawerOpen(true)}
+          onOpenSalonMatrix={() => setIsSalonMatrixOpen(true)}
         />
         <Contacts />
       </main>
@@ -90,11 +118,24 @@ export const App: React.FC = () => {
       <ScrollToTop />
       <MobileCTA onBookClick={scrollToBooking} />
 
+      {/* Client Appointments Self-Service Portal Drawer */}
+      <ClientAppointmentsDrawer
+        isOpen={isAppointmentsDrawerOpen}
+        onClose={() => setIsAppointmentsDrawerOpen(false)}
+        onNewBookingClick={scrollToBooking}
+      />
+
+      {/* Salon Live Schedule & CRM Matrix Modal */}
+      <SalonLiveMatrixModal
+        isOpen={isSalonMatrixOpen}
+        onClose={() => setIsSalonMatrixOpen(false)}
+      />
+
       {/* Toast Notification */}
       <Toast
         show={toastOpen}
-        message="Заявка успешно принята!"
-        subMessage="Наш администратор перезвонит вам в течение 10 минут для подтверждения времени."
+        message="Запись успешно создана и подтверждена!"
+        subMessage="Слот забронирован. Детали доступны в разделе «Мои записи» и выгружены в ваш календарь."
         onClose={() => setToastOpen(false)}
       />
     </div>

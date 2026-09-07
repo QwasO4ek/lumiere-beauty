@@ -6,6 +6,7 @@ export interface Service {
   price: number;
   formattedPrice: string;
   duration: string;
+  durationMinutes: number;
   description: string;
   popular?: boolean;
 }
@@ -61,3 +62,43 @@ export interface BookingFormData {
   comment: string;
   agreedToPolicy: boolean;
 }
+
+export interface Appointment {
+  id: string;
+  clientName: string;
+  clientPhone: string;
+  clientEmail?: string;
+  serviceIds: string[];
+  services: Service[];
+  masterId: string;
+  masterName: string;
+  masterImage?: string;
+  date: string; // YYYY-MM-DD
+  time: string; // HH:MM
+  endTime: string; // HH:MM
+  totalDurationMinutes: number;
+  totalPrice: number;
+  discountAmount?: number;
+  status: 'confirmed' | 'completed' | 'cancelled';
+  createdAt: string;
+  notes?: string;
+  reminderViaWhatsApp: boolean;
+}
+
+export interface TimeSlot {
+  time: string;
+  endTime: string;
+  available: boolean;
+  period: 'morning' | 'afternoon' | 'evening';
+}
+
+export interface MasterWorkSlot {
+  masterId: string;
+  masterName: string;
+  date: string;
+  startTime: string;
+  endTime: string;
+  clientName?: string;
+  serviceName?: string;
+}
+
