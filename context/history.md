@@ -15,3 +15,5 @@
 - Установлен и настроен Render CLI (v2.26.0).
 - Создан сервис статического сайта на Render: `lumiere-beauty` (`srv-dafe9mid0e5s73c2k0qg`).
 - Успешно завершен деплой со статусом `live`. Сайт доступен по адресу: `https://lumiere-beauty.onrender.com`.
+- Выполнен полный редизайн в ультрасовременном светлом стиле (Bento Grid, палитра pure/pearl/champagne, шрифты Cormorant Garamond и Plus Jakarta Sans, интерактивный калькулятор визита).
+- Новый релиз отправлен в GitHub и успешно задеплоен на Render со статусом `live`.
