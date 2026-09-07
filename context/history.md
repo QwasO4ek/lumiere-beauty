@@ -11,3 +11,7 @@
 - Разработан и собран полнофункциональный современный сайт-визитка для салона красоты «LUMIÈRE BEAUTY» (React, TypeScript, Vite, Tailwind CSS, Lucide Icons).
 - Репозиторий инициализирован в Git и сделан initial commit.
 - Запущен локальный dev-сервер на http://localhost:5173.
+- Создан удаленный репозиторий на GitHub: `https://github.com/QwasO4ek/lumiere-beauty`, исходный код отправлен в ветку `main`.
+- Установлен и настроен Render CLI (v2.26.0).
+- Создан сервис статического сайта на Render: `lumiere-beauty` (`srv-dafe9mid0e5s73c2k0qg`).
+- Успешно завершен деплой со статусом `live`. Сайт доступен по адресу: `https://lumiere-beauty.onrender.com`.
