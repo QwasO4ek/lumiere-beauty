@@ -1,0 +1,48 @@
+import { Master } from '../types';
+
+export const masters: Master[] = [
+  {
+    id: 'master-alina',
+    name: 'Алина Воронова',
+    role: 'Топ-стилист / Колорист',
+    experience: '8 лет опыта',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80',
+    bio: 'Выпускница академии Vidal Sassoon. Эксперт в сложных техниках окрашивания (Airtouch, Shatush) и архитектурных стрижках, подчеркивающих природную текстуру волос.',
+    specialties: ['Airtouch', 'Архитектурные стрижки', 'Lebel СПА-уходы', 'Тотал-блонд'],
+    rating: 4.98,
+    reviewsCount: 142,
+  },
+  {
+    id: 'master-maria',
+    name: 'Мария Ким',
+    role: 'Ведущий Nail-мастер',
+    experience: '6 лет опыта',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
+    bio: 'Специалист по аппаратному и комбинированному маникюру, японскому эко-маникюру и эстетическому педикюру Smart. Перфекционист в создании идеальных бликов и тонкого покрытия.',
+    specialties: ['Smart-педикюр', 'Аппаратный маникюр', 'Японский эко-маникюр', 'Тонкое покрытие'],
+    rating: 4.96,
+    reviewsCount: 118,
+  },
+  {
+    id: 'master-diana',
+    name: 'Диана Сабитова',
+    role: 'Brow & Lash стилист',
+    experience: '5 лет опыта',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80',
+    bio: 'Мастер естественных бровей и выразительного взгляда. Создает индивидуальную форму, исходя из анатомических линий лица. Тренер по ламинированию ресниц.',
+    specialties: ['Ламинирование ресниц', 'Архитектура бровей', 'Долговременная укладка', 'Окрашивание хной'],
+    rating: 4.95,
+    reviewsCount: 94,
+  },
+  {
+    id: 'master-sofia',
+    name: 'София Левина',
+    role: 'Топ-визажист',
+    experience: '7 лет опыта',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80',
+    bio: 'Работала на неделях моды и в глянцевых съемках. Создает легкие «сияющие» макияжи без эффекта маски, а также безупречно стойкие свадебные и вечерние образы.',
+    specialties: ['Свадебный макияж', 'Nude glow образ', 'Вечерний макияж', 'Смоки айс'],
+    rating: 4.99,
+    reviewsCount: 126,
+  },
+];
