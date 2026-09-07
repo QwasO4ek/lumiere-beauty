@@ -9,36 +9,44 @@
   }
 
   body {
-    background-color: #FAF8F5;
-    color: #24211F;
+    background-color: #FFFFFF;
+    color: #111827;
     overflow-x: hidden;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
-  /* Custom subtle scrollbar */
+  /* Minimal clean scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #FAF8F5;
+    background: #FAFAFA;
   }
   ::-webkit-scrollbar-thumb {
-    background: #D6C7BA;
-    border-radius: 4px;
+    background: #E5E7EB;
+    border-radius: 9999px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #B88C72;
+    background: #C5A880;
   }
 }
 
-/* Glass & Luxury styles */
-.glass-nav {
-  background-color: rgba(250, 248, 245, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Glass & Luminous Effects */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(229, 231, 235, 0.7);
 }
 
-.luxury-gradient-text {
-  background: linear-gradient(135deg, #24211F 0%, #B88C72 100%);
+.glass-nav {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.champagne-gradient-text {
+  background: linear-gradient(135deg, #111827 30%, #A88A62 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

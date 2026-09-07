@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle, X } from 'lucide-react';
+import { CheckCircle2, X } from 'lucide-react';
 
 interface ToastProps {
   show: boolean;
@@ -13,20 +13,20 @@ export const Toast: React.FC<ToastProps> = ({ show, message, subMessage, onClose
 
   return (
     <div className="fixed bottom-6 right-6 z-50 max-w-md w-full sm:w-auto animate-slide-up">
-      <div className="bg-charcoal-900 text-white px-6 py-5 rounded-none shadow-2xl border-l-4 border-terracotta-500 flex items-start gap-4">
-        <div className="p-1 rounded-full bg-terracotta-500/20 text-terracotta-300 mt-0.5">
-          <CheckCircle className="w-6 h-6" />
+      <div className="bg-white text-charcoal-900 px-6 py-5 rounded-3xl shadow-2xl border border-pearl-300 flex items-start gap-4">
+        <div className="p-1 rounded-xl bg-emerald-50 text-emerald-600 mt-0.5 border border-emerald-200">
+          <CheckCircle2 className="w-5 h-5" />
         </div>
         <div className="flex-1 pr-2">
-          <h4 className="font-serif text-lg font-medium tracking-wide text-cream-100">{message}</h4>
-          {subMessage && <p className="text-cream-300 text-sm mt-1 leading-relaxed">{subMessage}</p>}
+          <h4 className="font-serif text-lg font-medium text-charcoal-900">{message}</h4>
+          {subMessage && <p className="text-zinc-500 text-xs mt-1 leading-relaxed">{subMessage}</p>}
         </div>
         <button
           onClick={onClose}
           aria-label="Закрыть уведомление"
-          className="text-cream-400 hover:text-white transition-colors p-1"
+          className="text-zinc-400 hover:text-charcoal-900 transition-colors p-1 rounded-full hover:bg-pearl-100"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4" />
         </button>
       </div>
     </div>

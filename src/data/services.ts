@@ -1,13 +1,13 @@
 import { Service } from '../types';
 
 export const serviceCategories = [
-  { id: 'all', label: 'Все услуги' },
+  { id: 'all', label: 'Все направления' },
   { id: 'hair', label: 'Волосы' },
   { id: 'nails', label: 'Ногти' },
   { id: 'brows-lashes', label: 'Брови и ресницы' },
   { id: 'makeup', label: 'Макияж' },
   { id: 'skincare', label: 'Уход за лицом' },
-  { id: 'spa', label: 'SPA' },
+  { id: 'spa', label: 'SPA ритуалы' },
 ] as const;
 
 export const services: Service[] = [
@@ -20,7 +20,7 @@ export const services: Service[] = [
     price: 8000,
     formattedPrice: 'от 8 000 ₸',
     duration: '60 мин',
-    description: 'Индивидуальный подбор формы с учетом структуры волос, мытье головы и укладка по форме.',
+    description: 'Индивидуальная геометрия формы, мытье головы с органическим уходом и стойкая салонная укладка.',
     popular: true,
   },
   {
@@ -31,7 +31,7 @@ export const services: Service[] = [
     price: 18000,
     formattedPrice: 'от 18 000 ₸',
     duration: '180–240 мин',
-    description: 'Airtouch, Shatush, Balayage с использованием премиальных красителей и защитного ухода.',
+    description: 'Airtouch, Shatush, Balayage на красителях премиум-класса с сохранением плотности и шелковистости волос.',
     popular: true,
   },
   {
@@ -42,7 +42,7 @@ export const services: Service[] = [
     price: 6000,
     formattedPrice: 'от 6 000 ₸',
     duration: '45–60 мин',
-    description: 'Локоны, голливудская волна, объемный брашинг или гладкий глянец с термозащитой.',
+    description: 'Естественные текстурные локоны, голливудская волна или зеркальный глянец с термозащитой.',
   },
   {
     id: 'hair-care',
@@ -52,7 +52,8 @@ export const services: Service[] = [
     price: 16000,
     formattedPrice: 'от 16 000 ₸',
     duration: '90 мин',
-    description: 'Многоступенчатая японская спа-программа глубокого восстановления на молекулярном уровне.',
+    description: 'Легендарный 12-ступенчатый японский ритуал молекулярного восстановления структуры волос.',
+    popular: true,
   },
 
   // Ногти
@@ -64,7 +65,7 @@ export const services: Service[] = [
     price: 7000,
     formattedPrice: 'от 7 000 ₸',
     duration: '60 мин',
-    description: 'Деликатная обработка кутикулы, придание формы ногтям, увлажняющий массаж и уход.',
+    description: 'Ювелирная обработка кутикулы, придание безупречной формы, увлажняющая сыворотка и массаж.',
     popular: true,
   },
   {
@@ -75,7 +76,7 @@ export const services: Service[] = [
     price: 8000,
     formattedPrice: 'от 8 000 ₸',
     duration: '90 мин',
-    description: 'Идеальные блики, укрепление ногтевой пластины базой премиум-класса и стойкий цвет.',
+    description: 'Идеальные блики, ультратонкое покрытие и стойкость до 4 недель без сколов и отслоек.',
     popular: true,
   },
   {
@@ -86,7 +87,7 @@ export const services: Service[] = [
     price: 11000,
     formattedPrice: 'от 11 000 ₸',
     duration: '75 мин',
-    description: 'Инновационная аппаратная обработка стоп смарт-дисками с молекулярным маслом.',
+    description: 'Инновационная обработка стоп смарт-дисками с молекулярным маслом для эффекта шелковой кожи.',
   },
 
   // Брови и ресницы
@@ -98,7 +99,7 @@ export const services: Service[] = [
     price: 4000,
     formattedPrice: 'от 4 000 ₸',
     duration: '40 мин',
-    description: 'Моделирование формы пинцетом/воском, бережное окрашивание хной или мягкой краской.',
+    description: 'Подбор гармоничной формы по золотому сечению лица, деликатное моделирование и окрашивание.',
   },
   {
     id: 'lashes-lamination',
@@ -108,7 +109,7 @@ export const services: Service[] = [
     price: 7000,
     formattedPrice: 'от 7 000 ₸',
     duration: '60 мин',
-    description: 'Создание изящного завитка, насыщенного черного оттенка и глубокое питание кератином.',
+    description: 'Выразительный завиток, насыщенный угольный цвет и уплотнение натуральных ресниц на 30%.',
     popular: true,
   },
   {
@@ -119,7 +120,7 @@ export const services: Service[] = [
     price: 6500,
     formattedPrice: 'от 6 500 ₸',
     duration: '50 мин',
-    description: 'Придание идеального направления волоскам, фиксация формы и деликатный уход.',
+    description: 'Укрощение непослушных волосков, создание эффекта естественной густоты и фиксация формы.',
   },
 
   // Макияж
@@ -131,7 +132,7 @@ export const services: Service[] = [
     price: 12000,
     formattedPrice: 'от 12 000 ₸',
     duration: '75 мин',
-    description: 'Стойкий выразительный образ для особенных событий: smoky eyes, стрелки, идеальный тон кожи.',
+    description: 'Стойкий элегантный образ: дымчатый smoky eyes, идеальные стрелки или роскошный акцент на губы.',
     popular: true,
   },
   {
@@ -142,29 +143,29 @@ export const services: Service[] = [
     price: 9000,
     formattedPrice: 'от 9 000 ₸',
     duration: '50 мин',
-    description: 'Эффект сияющей отдохнувшей кожи «макияж без макияжа», подчеркивающий природную красоту.',
+    description: 'Эффект свежей «стеклянной» кожи, сияющий отдохнувший взгляд и естественный румянец.',
   },
   {
     id: 'makeup-bridal',
-    name: 'Свадебный макияж + пробный образ',
+    name: 'Свадебный образ',
     category: 'makeup',
     categoryLabel: 'Макияж',
     price: 25000,
     formattedPrice: 'от 25 000 ₸',
     duration: '120 мин',
-    description: 'Безупречная стойкость на 24 часа, адаптация под фото/видео съемку и репетиция образа.',
+    description: 'Безупречная стойкость на весь день, репетиция образа и индивидуальная адаптация под фотосъемку.',
   },
 
   // Уход за лицом
   {
     id: 'skin-hydra',
-    name: 'Атравматическая чистка лица + пилинг',
+    name: 'Атравматическая чистка + пилинг',
     category: 'skincare',
     categoryLabel: 'Уход за лицом',
     price: 15000,
     formattedPrice: 'от 15 000 ₸',
     duration: '90 мин',
-    description: 'Бережное глубокое очищение пор на косметике Holy Land (Израиль) без раздражения.',
+    description: 'Глубокое бережное очищение пор на израильской косметике Holy Land без травмирования и покраснений.',
   },
   {
     id: 'skin-massage',
@@ -174,19 +175,19 @@ export const services: Service[] = [
     price: 13000,
     formattedPrice: 'от 13 000 ₸',
     duration: '60 мин',
-    description: 'Естественный лифтинг, снятие мышечных зажимов, моделирование овала лица и сияние кожи.',
+    description: 'Мгновенный безоперационный лифтинг, снятие мышечных зажимов и четкий контур овала лица.',
   },
 
   // SPA
   {
     id: 'spa-ritual',
-    name: 'Релакс-ритуал для рук и ног с аромамаслами',
+    name: 'SPA-ритуал для рук и ног с аромамаслами',
     category: 'spa',
     categoryLabel: 'SPA',
     price: 9500,
     formattedPrice: 'от 9 500 ₸',
     duration: '60 мин',
-    description: 'Теплые компрессы, деликатный скраб, массаж по драгоценным органическим маслам.',
+    description: 'Деликатный пилинг, теплые компрессы, массаж по селективным органическим маслам.',
   },
   {
     id: 'spa-head',
@@ -196,7 +197,7 @@ export const services: Service[] = [
     price: 14000,
     formattedPrice: 'от 14 000 ₸',
     duration: '75 мин',
-    description: 'Массаж кожи головы с гидротерапией, расслабление шейно-воротниковой зоны и уход за волосами.',
+    description: 'Гидромассаж кожи головы, глубокое очищение волосяных фолликулов и полное снятие стресса.',
     popular: true,
   },
 ];

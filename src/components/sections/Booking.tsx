@@ -44,7 +44,6 @@ export const Booking: React.FC<BookingProps> = ({
     }
   }, [preselectedMasterId]);
 
-  // Phone input formatter for Kazakhstan/CIS: +7 (700) 000-00-00
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let input = e.target.value.replace(/\D/g, '');
     if (input.startsWith('8')) input = '7' + input.slice(1);
@@ -77,20 +76,20 @@ export const Booking: React.FC<BookingProps> = ({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Пожалуйста, введите ваше имя';
+      newErrors.name = 'Пожалуйста, укажите ваше имя';
     }
 
     const cleanPhone = formData.phone.replace(/\D/g, '');
     if (!cleanPhone || cleanPhone.length < 11) {
-      newErrors.phone = 'Введите корректный номер телефона';
+      newErrors.phone = 'Укажите корректный номер телефона';
     }
 
     if (!formData.serviceId) {
-      newErrors.serviceId = 'Пожалуйста, выберите услугу';
+      newErrors.serviceId = 'Выберите желаемую процедуру';
     }
 
     if (!formData.agreedToPolicy) {
-      newErrors.agreedToPolicy = 'Необходимо согласие на обработку данных';
+      newErrors.agreedToPolicy = 'Требуется согласие на обработку данных';
     }
 
     setErrors(newErrors);
@@ -103,12 +102,10 @@ export const Booking: React.FC<BookingProps> = ({
 
     setIsSubmitting(true);
 
-    // Mock network request
     setTimeout(() => {
       setIsSubmitting(false);
       setShowSuccessModal(true);
       onSuccess();
-      // Reset form
       setFormData({
         name: '',
         phone: '',
@@ -119,49 +116,45 @@ export const Booking: React.FC<BookingProps> = ({
         comment: '',
         agreedToPolicy: true,
       });
-    }, 800);
+    }, 700);
   };
 
-  // Time slots for booking
   const availableTimeSlots = [
     '10:00', '11:30', '13:00', '14:30', '16:00', '17:30', '19:00',
   ];
 
   return (
-    <section id="booking" className="py-24 sm:py-32 bg-cream-100 relative">
+    <section id="booking" className="py-24 sm:py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-6 sm:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="inline-flex items-center space-x-2 mb-4">
-              <span className="w-8 h-[1px] bg-terracotta-500" />
-              <span className="text-xs uppercase tracking-[0.25em] text-terracotta-600 font-semibold">
-                Онлайн-запись
-              </span>
-              <span className="w-8 h-[1px] bg-terracotta-500" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-pearl-100 rounded-full text-xs font-semibold text-charcoal-900 mb-3 border border-pearl-200">
+              <Sparkles className="w-3.5 h-3.5 text-champagne-600" />
+              <span>Быстрая запись</span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-charcoal-900 tracking-tight mb-4">
+            <h2 className="font-serif text-3xl sm:text-5xl font-normal text-charcoal-900 tracking-tight mb-4">
               Запишитесь на процедуру
             </h2>
-            <p className="text-base text-charcoal-800/70 font-light">
-              Заполните простую форму, и наш администратор подтвердит удобное время визита
+            <p className="text-base text-zinc-600 font-normal">
+              Выберите удобный день и время — мы забронируем слот и свяжемся с вами в течение 10 минут
             </p>
 
             {promoApplied && (
-              <div className="mt-4 inline-flex items-center gap-2 bg-terracotta-500/10 border border-terracotta-500/30 px-4 py-2 text-terracotta-700 text-xs font-medium">
-                <Sparkles className="w-4 h-4 text-terracotta-500" />
-                <span>Скидка 10% на первый визит будет применена при подтверждении</span>
+              <div className="mt-4 inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-4 py-2 rounded-full text-emerald-800 text-xs font-semibold">
+                <Sparkles className="w-4 h-4 text-emerald-600" />
+                <span>Скидка 10% на первый визит будет учтена при подтверждении</span>
               </div>
             )}
           </div>
 
           {/* Form Card */}
-          <div className="bg-white p-8 sm:p-12 border border-cream-300 shadow-luxury">
+          <div className="bg-pearl-50 rounded-3xl p-8 sm:p-12 border border-pearl-300 shadow-soft">
             <form onSubmit={handleSubmit} noValidate className="space-y-6">
               {/* Name and Phone */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2">
+                  <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2">
                     Ваше имя *
                   </label>
                   <input
@@ -173,10 +166,8 @@ export const Booking: React.FC<BookingProps> = ({
                       if (errors.name) setErrors({ ...errors, name: '' });
                     }}
                     placeholder="Например, Алина"
-                    className={`w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border transition-colors focus:outline-none focus:bg-white ${
-                      errors.name
-                        ? 'border-red-500 focus:border-red-500'
-                        : 'border-cream-300 focus:border-charcoal-900'
+                    className={`w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border transition-all focus:outline-none focus:ring-2 focus:ring-charcoal-900/10 ${
+                      errors.name ? 'border-red-400' : 'border-pearl-300 focus:border-charcoal-900'
                     }`}
                   />
                   {errors.name && (
@@ -187,7 +178,7 @@ export const Booking: React.FC<BookingProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2">
+                  <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2">
                     Телефон *
                   </label>
                   <input
@@ -196,10 +187,8 @@ export const Booking: React.FC<BookingProps> = ({
                     value={formData.phone}
                     onChange={handlePhoneChange}
                     placeholder="+7 (700) 000-00-00"
-                    className={`w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border transition-colors focus:outline-none focus:bg-white ${
-                      errors.phone
-                        ? 'border-red-500 focus:border-red-500'
-                        : 'border-cream-300 focus:border-charcoal-900'
+                    className={`w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border transition-all focus:outline-none focus:ring-2 focus:ring-charcoal-900/10 ${
+                      errors.phone ? 'border-red-400' : 'border-pearl-300 focus:border-charcoal-900'
                     }`}
                   />
                   {errors.phone && (
@@ -210,10 +199,10 @@ export const Booking: React.FC<BookingProps> = ({
                 </div>
               </div>
 
-              {/* Service & Master Select */}
+              {/* Service & Master */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2">
+                  <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2">
                     Выберите услугу *
                   </label>
                   <select
@@ -222,10 +211,8 @@ export const Booking: React.FC<BookingProps> = ({
                       setFormData({ ...formData, serviceId: e.target.value });
                       if (errors.serviceId) setErrors({ ...errors, serviceId: '' });
                     }}
-                    className={`w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border transition-colors focus:outline-none focus:bg-white ${
-                      errors.serviceId
-                        ? 'border-red-500 focus:border-red-500'
-                        : 'border-cream-300 focus:border-charcoal-900'
+                    className={`w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border transition-all focus:outline-none focus:ring-2 focus:ring-charcoal-900/10 ${
+                      errors.serviceId ? 'border-red-400' : 'border-pearl-300 focus:border-charcoal-900'
                     }`}
                   >
                     <option value="">-- Выберите процедуру --</option>
@@ -243,13 +230,13 @@ export const Booking: React.FC<BookingProps> = ({
                 </div>
 
                 <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2">
-                    Выберите мастера (опционально)
+                  <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2">
+                    Мастер (по желанию)
                   </label>
                   <select
                     value={formData.masterId}
                     onChange={(e) => setFormData({ ...formData, masterId: e.target.value })}
-                    className="w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border border-cream-300 focus:border-charcoal-900 transition-colors focus:outline-none focus:bg-white"
+                    className="w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border border-pearl-300 focus:border-charcoal-900 transition-all focus:outline-none"
                   >
                     <option value="">Любой свободный мастер</option>
                     {masters.map((m) => (
@@ -261,57 +248,63 @@ export const Booking: React.FC<BookingProps> = ({
                 </div>
               </div>
 
-              {/* Date & Time Slot */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-terracotta-500" />
-                    Желаемая дата
-                  </label>
-                  <input
-                    type="date"
-                    value={formData.date}
-                    min={new Date().toISOString().split('T')[0]}
-                    onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                    className="w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border border-cream-300 focus:border-charcoal-900 transition-colors focus:outline-none focus:bg-white"
-                  />
-                </div>
+              {/* Date and Time slot chips */}
+              <div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-4">
+                  <div>
+                    <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-zinc-400" />
+                      Дата визита
+                    </label>
+                    <input
+                      type="date"
+                      value={formData.date}
+                      min={new Date().toISOString().split('T')[0]}
+                      onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                      className="w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border border-pearl-300 focus:border-charcoal-900 transition-all focus:outline-none"
+                    />
+                  </div>
 
-                <div>
-                  <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2 flex items-center gap-1.5">
-                    <Clock className="w-3.5 h-3.5 text-terracotta-500" />
-                    Желаемое время
-                  </label>
-                  <select
-                    value={formData.time}
-                    onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                    className="w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border border-cream-300 focus:border-charcoal-900 transition-colors focus:outline-none focus:bg-white"
-                  >
-                    <option value="">Выберите удобное время</option>
-                    {availableTimeSlots.map((slot) => (
-                      <option key={slot} value={slot}>
-                        {slot}
-                      </option>
-                    ))}
-                  </select>
+                  <div>
+                    <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-zinc-400" />
+                      Время
+                    </label>
+                    <div className="flex flex-wrap gap-1.5">
+                      {availableTimeSlots.map((slot) => (
+                        <button
+                          key={slot}
+                          type="button"
+                          onClick={() => setFormData({ ...formData, time: slot })}
+                          className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                            formData.time === slot
+                              ? 'bg-charcoal-900 text-white shadow-sm'
+                              : 'bg-white hover:bg-pearl-200 text-zinc-700 border border-pearl-300'
+                          }`}
+                        >
+                          {slot}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Comment */}
               <div>
-                <label className="block text-xs uppercase tracking-wider font-semibold text-charcoal-900 mb-2">
-                  Комментарий или пожелания
+                <label className="block text-xs font-semibold text-charcoal-900 uppercase tracking-wider mb-2">
+                  Пожелания или комментарий
                 </label>
                 <textarea
-                  rows={3}
+                  rows={2}
                   value={formData.comment}
                   onChange={(e) => setFormData({ ...formData, comment: e.target.value })}
-                  placeholder="Например: хочу совместить маникюр и окрашивание, или есть аллергия..."
-                  className="w-full px-4 py-3 bg-cream-50 text-charcoal-900 text-sm border border-cream-300 focus:border-charcoal-900 transition-colors focus:outline-none focus:bg-white resize-none"
+                  placeholder="Особые пожелания или детали..."
+                  className="w-full px-4 py-3 bg-white text-charcoal-900 text-sm rounded-2xl border border-pearl-300 focus:border-charcoal-900 transition-all focus:outline-none resize-none"
                 />
               </div>
 
-              {/* Checkbox Agreement */}
+              {/* Checkbox */}
               <div>
                 <label className="flex items-start gap-3 cursor-pointer select-none">
                   <input
@@ -321,14 +314,14 @@ export const Booking: React.FC<BookingProps> = ({
                       setFormData({ ...formData, agreedToPolicy: e.target.checked });
                       if (errors.agreedToPolicy) setErrors({ ...errors, agreedToPolicy: '' });
                     }}
-                    className="mt-0.5 w-4 h-4 text-terracotta-600 rounded border-cream-300 focus:ring-terracotta-500"
+                    className="mt-0.5 w-4 h-4 rounded text-charcoal-900 focus:ring-charcoal-900"
                   />
-                  <span className="text-xs text-charcoal-800/70 leading-normal">
-                    Я согласен(на) на обработку персональных данных и ознакомлен(а) с политикой конфиденциальности
+                  <span className="text-xs text-zinc-500 leading-normal">
+                    Согласен(на) на обработку персональных данных согласно политике конфиденциальности
                   </span>
                 </label>
                 {errors.agreedToPolicy && (
-                  <p className="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                  <p className="text-red-500 text-xs mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" /> {errors.agreedToPolicy}
                   </p>
                 )}
@@ -338,14 +331,14 @@ export const Booking: React.FC<BookingProps> = ({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 bg-charcoal-900 hover:bg-terracotta-600 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-all duration-300 flex items-center justify-center gap-3 shadow-luxury hover:shadow-luxury-hover disabled:opacity-50"
+                className="w-full py-4 bg-charcoal-900 hover:bg-zinc-800 text-white rounded-full text-xs uppercase tracking-widest font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-soft hover:shadow-hover disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <span>Отправка заявки...</span>
                 ) : (
                   <>
                     <span>Отправить заявку</span>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-3.5 h-3.5" />
                   </>
                 )}
               </button>
@@ -354,25 +347,25 @@ export const Booking: React.FC<BookingProps> = ({
         </div>
       </div>
 
-      {/* Success Modal Notification */}
+      {/* Success Modal */}
       {showSuccessModal && (
-        <div className="fixed inset-0 z-50 bg-charcoal-900/80 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-white max-w-md w-full p-8 sm:p-10 border border-cream-300 shadow-2xl text-center">
-            <div className="w-16 h-16 bg-terracotta-500/20 text-terracotta-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="w-8 h-8 stroke-[2.5]" />
+        <div className="fixed inset-0 z-50 bg-charcoal-900/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white rounded-3xl max-w-md w-full p-8 sm:p-10 border border-pearl-300 shadow-2xl text-center">
+            <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-5 border border-emerald-100">
+              <Check className="w-7 h-7 stroke-[2.5]" />
             </div>
 
-            <h3 className="font-serif text-2xl text-charcoal-900 font-normal mb-3">
+            <h3 className="font-serif text-2xl text-charcoal-900 font-normal mb-2">
               Спасибо! Ваша заявка принята.
             </h3>
 
-            <p className="text-sm text-charcoal-800/70 font-light leading-relaxed mb-8">
-              Мы свяжемся с вами в ближайшее время по указанному телефону для подтверждения записи и ответа на любые вопросы.
+            <p className="text-sm text-zinc-500 font-normal leading-relaxed mb-6">
+              Мы свяжемся с вами в ближайшее время для подтверждения записи и ответим на все вопросы.
             </p>
 
             <button
               onClick={() => setShowSuccessModal(false)}
-              className="w-full py-3.5 bg-charcoal-900 hover:bg-terracotta-600 text-white text-xs uppercase tracking-[0.2em] font-semibold transition-colors"
+              className="w-full py-3 bg-charcoal-900 hover:bg-zinc-800 text-white rounded-full text-xs uppercase tracking-wider font-semibold transition-colors"
             >
               Отлично
             </button>

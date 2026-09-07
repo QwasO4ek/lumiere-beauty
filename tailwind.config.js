@@ -7,36 +7,46 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: {
-          50: '#FDFBF9',
-          100: '#FAF8F5', // основной фон
-          200: '#F3EFEA',
-          300: '#E8DED5', // приглушенный бежевый
-          400: '#D6C7BA',
+        pure: '#FFFFFF',
+        pearl: {
+          50: '#FCFCFD',
+          100: '#F9FAFB',
+          200: '#F3F4F6',
+          300: '#E5E7EB',
+          400: '#D1D5DB',
         },
         charcoal: {
-          800: '#2D2825', // дополнительный темный
-          900: '#24211F', // основной текст
+          700: '#374151',
+          800: '#1F2937',
+          900: '#111827',
+          950: '#090D14',
         },
-        terracotta: {
-          300: '#D5A790',
-          400: '#C79A81',
-          500: '#B88C72', // акцентный цвет
-          600: '#A2765D',
-          700: '#865E47',
-        }
+        champagne: {
+          100: '#F9F6F0',
+          200: '#F2ECE1',
+          300: '#E5DAC8',
+          400: '#D5C3AA',
+          500: '#C5A880',
+          600: '#A88A62',
+          700: '#876D49',
+        },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', '"Playfair Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       boxShadow: {
-        'luxury': '0 10px 30px -5px rgba(36, 33, 31, 0.05), 0 5px 15px -3px rgba(36, 33, 31, 0.03)',
-        'luxury-hover': '0 20px 40px -10px rgba(36, 33, 31, 0.09), 0 10px 20px -5px rgba(36, 33, 31, 0.04)',
+        'soft': '0 2px 20px -2px rgba(0, 0, 0, 0.03), 0 8px 16px -4px rgba(0, 0, 0, 0.02)',
+        'hover': '0 12px 35px -8px rgba(0, 0, 0, 0.08), 0 4px 12px -2px rgba(0, 0, 0, 0.03)',
+        'glow': '0 0 25px rgba(197, 168, 128, 0.18)',
+      },
+      borderRadius: {
+        '4xl': '2rem',
       },
       animation: {
-        'fade-in': 'fadeIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-        'slide-up': 'slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in': 'fadeIn 0.5s ease-out forwards',
+        'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'pulse-subtle': 'pulseSubtle 3s infinite',
       },
       keyframes: {
         fadeIn: {
@@ -44,8 +54,12 @@ export default {
           '100%': { opacity: '1' },
         },
         slideUp: {
-          '0%': { opacity: '0', transform: 'translateY(24px)' },
+          '0%': { opacity: '0', transform: 'translateY(16px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        pulseSubtle: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.6' },
         }
       }
     },

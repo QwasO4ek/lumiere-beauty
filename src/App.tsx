@@ -56,7 +56,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-cream-100 text-charcoal-900 selection:bg-terracotta-500 selection:text-white relative">
+    <div className="min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-zinc-900 selection:text-white relative">
       {/* Top Sticky Header */}
       <Header onBookClick={scrollToBooking} />
 
@@ -93,8 +93,8 @@ export const App: React.FC = () => {
       {/* Toast Notification */}
       <Toast
         show={toastOpen}
-        message="Заявка успешно отправлена!"
-        subMessage="Наш администратор перезвонит вам в течение 15 минут для подтверждения времени."
+        message="Заявка успешно принята!"
+        subMessage="Наш администратор перезвонит вам в течение 10 минут для подтверждения времени."
         onClose={() => setToastOpen(false)}
       />
     </div>
